@@ -52,8 +52,11 @@
         <h1
           class="mt-6 text-xl sm:text-2xl font-bold text-[#14181b] dark:text-white"
         >
-          Confirmando sua conta...
+          Finalizando autenticação...
         </h1>
+        <p class="mt-2 text-sm text-[#57636c] dark:text-[#95a1ac]">
+          Redirecionando para o aplicativo.
+        </p>
       </div>
 
       <div id="desktop-feedback" class="flex flex-col items-center text-center">
@@ -104,9 +107,13 @@
         ) {
           document.documentElement.classList.add("dark");
         }
+        const hash = window.location.hash;
 
-        const deepLink = "libriamei://libriamei.com/login";
-        window.location.href = deepLink;
+        const deepLinkBase = "libriamei://libriamei.com/welcomePage";
+
+        const deepLinkWithToken = deepLinkBase + hash;
+
+        window.location.href = deepLinkWithToken;
 
         setTimeout(function () {
           const loading = document.getElementById("loading-feedback");
