@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmando Conta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f1f4f8;
+      }
+      .dark body {
+        background-color: #1d2428;
+      }
+      #desktop-feedback {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen p-4">
+    <div
+      class="bg-white dark:bg-[#14181b] rounded-2xl shadow-xl p-6 sm:p-8 max-w-md w-full"
+    >
+      <div id="loading-feedback" class="flex flex-col items-center text-center">
+        <svg
+          class="mx-auto h-12 w-12 text-[#298be0] animate-spin"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        <h1
+          class="mt-6 text-xl sm:text-2xl font-bold text-[#14181b] dark:text-white"
+        >
+          Confirmando sua conta...
+        </h1>
+      </div>
+
+      <div id="desktop-feedback" class="flex flex-col items-center text-center">
+        <div
+          class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-[#249689]/10"
+        >
+          <svg
+            class="h-10 w-10 text-[#249689]"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <h1
+          class="mt-6 text-2xl sm:text-3xl font-bold text-[#14181b] dark:text-white"
+        >
+          Conta confirmada!
+        </h1>
+        <p class="mt-2 text-sm sm:text-base text-[#57636c] dark:text-[#95a1ac]">
+          Tudo certo! Você já pode fechar esta janela e acessar sua conta pelo
+          aplicativo.
+        </p>
+        <div class="mt-8">
+          <a
+            href="#"
+            onclick="window.close(); return false;"
+            class="inline-block rounded-lg bg-[#298be0] px-6 py-3 sm:px-8 text-base font-semibold text-white shadow-md transition-transform transform hover:scale-105 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-[#298be0] focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-[#14181b]"
+          >
+            Fechar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+
+        const deepLink = "seuapp://confirm";
+        window.location.href = deepLink;
+
+        setTimeout(function () {
+          const loading = document.getElementById("loading-feedback");
+          const desktop = document.getElementById("desktop-feedback");
+          if (loading) loading.style.display = "none";
+          if (desktop) desktop.style.display = "flex";
+        }, 2500);
+      })();
+    </script>
+  </body>
+</html>
